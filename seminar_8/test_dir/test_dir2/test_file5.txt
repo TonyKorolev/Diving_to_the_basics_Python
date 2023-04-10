@@ -1,0 +1,19 @@
+>>> import os.path, pathlib
+>>> p = pathlib.Path('file.txt')
+# создадим файл
+>>> p.touch()
+# канонический путь
+>>> path = os.path.realpath(p)
+>>> path
+# '/home/docs-python/file.txt'
+
+# проверка символической ссылки
+>>> link = os.path.join(os.getcwd(), 'Desktop', 'link')
+>>> link
+# '/home/docs-python/Desktop/link'
+
+# создадим символическую ссылку
+>>> os.symlink(path, link)
+# канонический путь по ссылке
+>>> os.path.realpath(link)
+# '/home/docs-python/file.txt'

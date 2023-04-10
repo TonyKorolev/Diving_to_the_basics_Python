@@ -1,0 +1,1 @@
+Функция realpath() модуля os.path в Python.
