@@ -30,23 +30,27 @@ def _deco_write_to_json(func: Callable):
 def solve_quadratic_equation(a: int, b: int, c: int) -> list:
     D = b**2 - 4 * a * c
     if D > 0:
-        x1 = (-b + D**1/2) / 2 * a
-        x2 = (-b - D**1/2) / 2 * a
+        x1 = round((-b + D**(1/2)) / 2 / a, 2)
+        x2 = round((-b - D**(1/2)) / 2 / a, 2)
     elif D == 0:
-        x1 = x2 = (-b + D**1/2) / 2 * a
+        x1 = x2 = round((-b + D**(1/2)) / 2 / a, 2)
     else:
         x1 = 'No roots'
         x2 = ''
     return [x1, x2]
 
-
+def _get_random_num() -> int:
+    num = 0
+    while num == 0:
+        num = random.randint(-100, 100)
+    return num
 
 def gen_abc_in_csv_file():
     with open('./seminars/seminar_9/num_for_quadratic_equation.csv', 'w', encoding='utf8', newline='') as file:
         file_writer = csv.writer(file, dialect='excel', delimiter=';',\
                                     quoting=csv.QUOTE_MINIMAL)
         for _ in range(100):
-            file_writer.writerow([random.randint(-30, 30) for _ in range(3)])
+            file_writer.writerow([_get_random_num() for _ in range(3)])
 
 gen_abc_in_csv_file()
 solve_quadratic_equation()

@@ -1,1 +1,1 @@
-__all__ = ['homework_task1.py']
+__all__ = ['homework_task1']
