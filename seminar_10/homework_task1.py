@@ -47,9 +47,6 @@ class Factory:
         instance = globals()[self.name](*self.args)
         return instance
 
-    # def get_attributes(self):
-    #     return self.instance
-
 
 if __name__ == '__main__':
     a = Factory('Reptiles', 'Lizard Curt', 'green', False).instance
